@@ -31,6 +31,8 @@ Gem::Specification.new do |s|
   s.required_ruby_version  = '>= 1.9.3'
 
   s.add_runtime_dependency 'sensu-plugin', '1.1.0'
+  s.add_runtime_dependency 'mysql', '2.9.1'
+  s.add_runtime_dependency 'mysql2', '0.3.18'
 
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4'
   s.add_development_dependency 'rubocop',                   '~> 0.30'
