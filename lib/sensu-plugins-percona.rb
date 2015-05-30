@@ -1,7 +1,15 @@
+
+require 'sensu-plugins-percona/version'
+
+# Load the defaults
+
 #
-# Set gem version
+# Default class
 #
 module SensuPluginsPercona
-  # Gem version
-  VERSION = '0.0.1.alpha.1'
+  class << self
+  end
+
+  class << self
+  end
 end
