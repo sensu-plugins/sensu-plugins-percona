@@ -16,6 +16,7 @@
 
 require 'sensu-plugin/check/cli'
 require 'mysql'
+require 'inifile'
 
 class CheckPerconaClusterSize < Sensu::Plugin::Check::CLI
   option :user,
@@ -27,8 +28,7 @@ class CheckPerconaClusterSize < Sensu::Plugin::Check::CLI
   option :password,
          description: 'MySQL Password',
          short: '-p PASS',
-         long: '--password PASS',
-         required: true
+         long: '--password PASS'
 
   option :hostname,
          description: 'Hostname to login to',
@@ -42,7 +42,15 @@ class CheckPerconaClusterSize < Sensu::Plugin::Check::CLI
          long: '--expected NUMBER',
          default: 1
 
+  option :ini,
+         description: 'ini file',
+         short: '-i',
+         long: '--ini VALUE'
+
   def run
+    if config[:ini]
+      update_config
+    end
     db = Mysql.real_connect(config[:hostname], config[:user], config[:password], config[:database])
     cluster_size = db
                    .query("SHOW GLOBAL STATUS LIKE 'wsrep_cluster_size'")
@@ -55,5 +63,13 @@ class CheckPerconaClusterSize < Sensu::Plugin::Check::CLI
     critical "Percona MySQL check failed: #{e.error}"
   ensure
     db.close if db
+  end
+
+  def update_config
+    ini = IniFile.load(config[:ini])
+    section = ini['client']
+    section.each do |key, option|
+      config[key.to_sym] = option
+    end
   end
 end
