@@ -5,7 +5,6 @@
 [![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona/badges/gpa.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona)
 [![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona/badges/coverage.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona)
 [![Dependency Status](https://gemnasium.com/sensu-plugins/sensu-plugins-percona.svg)](https://gemnasium.com/sensu-plugins/sensu-plugins-percona)
-[ ![Codeship Status for sensu-plugins/sensu-plugins-percona](https://codeship.com/projects/ebcee170-e948-0132-7604-26b28b7b5489/status?branch=master)](https://codeship.com/projects/82928)
 
 ## Functionality
 

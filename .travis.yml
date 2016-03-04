@@ -16,13 +16,15 @@ notifications:
     on_failure: always
 script:
 - bundle exec rake default
+- gem build sensu-plugins-percona.gemspec
+- gem install sensu-plugins-percona-*.gem
 deploy:
   provider: rubygems
   api_key:
-    secure: BGadf1sVrese2N5XbaWuQXWvyFY2r9tYle2Ua9H7J7HqHVftPOyUww8pLho7ufovVsMjQNystAxffiRjd1ytgSL1EFejlkM4kn4aMRG85UtdLoqcTc340DtaMK/dwuvWaKzgX/US+bDYVAAz1ogQYAmATYV9DgRb0xMw6Rr9EUI=
+    secure: B5Q6RCwDLexIBKW5UZQ8pGeIiq9zVtourg2qf2UbgeUgDRhyZGNf0s/XE8aBh5ZNqFAJQRl0KzDV4XHjcQqD31up8+MiEy3cqTP+Hxn6w2aHbqjwccrIzCk+jQus5nk+alkUAwLeGJkI8IFSeLfBtRpabigqQN0jdMo0NCPg5kM=
   gem: sensu-plugins-percona
   on:
-    tags: true
+    ags: true
     all_branches: true
     rvm: 1.9.3
     rvm: 2.0
