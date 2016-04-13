@@ -24,7 +24,7 @@ deploy:
     secure: B5Q6RCwDLexIBKW5UZQ8pGeIiq9zVtourg2qf2UbgeUgDRhyZGNf0s/XE8aBh5ZNqFAJQRl0KzDV4XHjcQqD31up8+MiEy3cqTP+Hxn6w2aHbqjwccrIzCk+jQus5nk+alkUAwLeGJkI8IFSeLfBtRpabigqQN0jdMo0NCPg5kM=
   gem: sensu-plugins-percona
   on:
-    ags: true
+    tags: true
     all_branches: true
     rvm: 1.9.3
     rvm: 2.0
