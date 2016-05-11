@@ -11,6 +11,7 @@
 ## Files
  * bin/check-percona-cluster-size.rb
  * bin/metrics-percona-cluster.rb
+ * bin/check-wsrep-ready.rb
 
 ## Usage
 
