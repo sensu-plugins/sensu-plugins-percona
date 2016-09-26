@@ -1,20 +1,31 @@
 #!/usr/bin/env ruby
 #
-# Check Cluster Status Plugin
-# ===
+#  check-wsrep-ready
 #
-# This plugin checks the wsrep_ready status of the cluster.
+# DESCRIPTION:
+#   This plugin checks the wsrep_ready status of the cluster.
 #
-# Copyright 2016 Antonio Berrios aberrios@psiclik.plus.com
-
-# Based on the Percona Cluster Size Plugin by Chris Alexander <chris.alexander@import.io>, import.io; which is based on
-# Based on the MySQL Health Plugin by Panagiotis Papadomitsos
+# OUTPUT:
+#   plain text
 #
-# Depends on mysql:
-# gem install mysql
+# PLATFORMS:
+#   Linux
 #
-# Released under the same terms as Sensu (the MIT license); see LICENSE
-# for details.
+# DEPENDENCIES:
+#   gem: sensu-plugin
+#   gem: mysql
+#
+# USAGE:
+#
+# NOTES:
+#   Based on the Percona Cluster Size Plugin by Chris Alexander <chris.alexander@import.io>, import.io; which is based on
+#   Based on the MySQL Health Plugin by Panagiotis Papadomitsos
+#
+# LICENSE:
+#   Copyright 2016 Antonio Berrios aberrios@psiclik.plus.com
+#   Released under the same terms as Sensu (the MIT license); see LICENSE
+#   for details.
+#
 
 require 'sensu-plugin/check/cli'
 require 'mysql'
