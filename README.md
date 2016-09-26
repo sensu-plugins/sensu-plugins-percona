@@ -1,6 +1,6 @@
 ## Sensu-Plugins-percona
 
-[ ![Build Status](https://travis-ci.org/sensu-plugins/sensu-plugins-percona.svg?branch=master)](https://travis-ci.org/sensu-plugins/sensu-plugins-percona)
+[![Build Status](https://travis-ci.org/sensu-plugins/sensu-plugins-percona.svg?branch=master)](https://travis-ci.org/sensu-plugins/sensu-plugins-percona)
 [![Gem Version](https://badge.fury.io/rb/sensu-plugins-percona.svg)](http://badge.fury.io/rb/sensu-plugins-percona)
 [![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona/badges/gpa.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona)
 [![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona/badges/coverage.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona)

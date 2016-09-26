@@ -4,6 +4,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Added
+- Ruby 2.3.0 support
+- Add `check-wsrep-ready` to check the ready status of a cluster (@aberrios85)
+
+### Removed
+- Ruby 1.9.3 support
+
+### Changed
+- Update to rubocop 0.40 and cleanup
 
 ## [0.0.2] - 2015-07-14
 ### Changed
