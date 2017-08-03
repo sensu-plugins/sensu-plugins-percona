@@ -1,9 +1,17 @@
-#Change Log
+# Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+### Removed
+- removed `mysql` gem dep as we have `mysql2` and `mysql` does not work on ruby 2.4 and has been abandoned. (@majormoses)
+
+### Changed
+- check-percona-cluster-size.rb: converted to use `mysql2` gem (@majormoses)
+- check-wsrep-ready.rb: converted to use `mysql2` gem (@majormoses)
+
 ### Added
 - ruby 2.4 testing to travis
 
