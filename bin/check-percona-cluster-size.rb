@@ -9,7 +9,7 @@
 # Based on the MySQL Health Plugin by Panagiotis Papadomitsos
 #
 # Depends on mysql:
-# gem install mysql
+# gem install mysql2
 #
 # Released under the same terms as Sensu (the MIT license); see LICENSE
 # for details.

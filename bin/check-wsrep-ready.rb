@@ -13,7 +13,7 @@
 #
 # DEPENDENCIES:
 #   gem: sensu-plugin
-#   gem: mysql
+#   gem: mysql2
 #
 # USAGE:
 #
