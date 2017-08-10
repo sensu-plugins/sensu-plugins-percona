@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
-
+### [1.1.0] - 2017-08-09
 ### Removed
 - removed `mysql` gem dep as we have `mysql2` and `mysql` does not work on ruby 2.4 and has been abandoned. (@majormoses)
 
@@ -13,7 +13,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 - check-wsrep-ready.rb: converted to use `mysql2` gem (@majormoses)
 
 ### Added
-- ruby 2.4 testing to travis
+- ruby 2.4 testing to travis (@majormoses)
+- slack badge (@majormoses)
 
 ## [1.0.0] - 2016-09-25
 ### Added
@@ -35,6 +36,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 - initial release
 - added ability to use ini files
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-percona/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-percona/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/sensu-plugins/sensu-plugins-percona/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/sensu-plugins/sensu-plugins-percona/compare/0.0.2...1.0.0
 [0.0.2]: https://github.com/sensu-plugins/sensu-plugins-percona/compare/0.0.1...0.0.2

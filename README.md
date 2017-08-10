@@ -5,6 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona/badges/gpa.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona)
 [![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona/badges/coverage.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-percona)
 [![Dependency Status](https://gemnasium.com/sensu-plugins/sensu-plugins-percona.svg)](https://gemnasium.com/sensu-plugins/sensu-plugins-percona)
+[![Slack Status](https://sensucommunityslack.herokuapp.com/badge.svg)](https://sensucommunityslack.herokuapp.com)
 
 ## Functionality
 
