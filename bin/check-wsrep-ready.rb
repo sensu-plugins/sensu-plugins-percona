@@ -13,7 +13,7 @@
 #
 # DEPENDENCIES:
 #   gem: sensu-plugin
-#   gem: mysql
+#   gem: mysql2
 #
 # USAGE:
 #
@@ -28,7 +28,7 @@
 #
 
 require 'sensu-plugin/check/cli'
-require 'mysql'
+require 'mysql2'
 
 class CheckWsrepReady < Sensu::Plugin::Check::CLI
   option :user,
@@ -49,11 +49,16 @@ class CheckWsrepReady < Sensu::Plugin::Check::CLI
          default: 'localhost'
 
   def run
-    db = Mysql.real_connect(config[:hostname], config[:user], config[:password], config[:database])
-    wsrep_ready = db.query("SHOW STATUS LIKE 'wsrep_ready';").fetch_hash.fetch('Value')
+    db = Mysql2::Client.new(
+      host:     config[:hostname],
+      username: config[:user],
+      password: config[:password],
+      database: config[:database]
+    )
+    wsrep_ready = db.query("SHOW STATUS LIKE 'wsrep_ready';").first['Value']
     critical "WSREP Ready is not ON. Is #{wsrep_ready}" if wsrep_ready != 'ON'
     ok 'Cluster is OK!' if wsrep_ready == 'ON'
-  rescue Mysql::Error => e
+  rescue Mysql2::Error => e
     critical "Percona MySQL check failed: #{e.error}"
   ensure
     db.close if db

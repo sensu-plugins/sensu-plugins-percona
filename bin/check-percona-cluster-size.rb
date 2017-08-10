@@ -9,13 +9,13 @@
 # Based on the MySQL Health Plugin by Panagiotis Papadomitsos
 #
 # Depends on mysql:
-# gem install mysql
+# gem install mysql2
 #
 # Released under the same terms as Sensu (the MIT license); see LICENSE
 # for details.
 
 require 'sensu-plugin/check/cli'
-require 'mysql'
+require 'mysql2'
 require 'inifile'
 
 class CheckPerconaClusterSize < Sensu::Plugin::Check::CLI
@@ -51,15 +51,16 @@ class CheckPerconaClusterSize < Sensu::Plugin::Check::CLI
     if config[:ini]
       update_config
     end
-    db = Mysql.real_connect(config[:hostname], config[:user], config[:password], config[:database])
-    cluster_size = db
-                   .query("SHOW GLOBAL STATUS LIKE 'wsrep_cluster_size'")
-                   .fetch_hash
-                   .fetch('Value')
-                   .to_i
+    db = Mysql2::Client.new(
+      host:     config[:hostname],
+      username: config[:user],
+      password: config[:password],
+      database: config[:database]
+    )
+    cluster_size = db.query("SHOW GLOBAL STATUS LIKE 'wsrep_cluster_size'").first['Value'].to_i
     critical "Expected to find #{config[:expected]} nodes, found #{cluster_size}" if cluster_size != config[:expected].to_i
     ok "Expected to find #{config[:expected]} nodes and found those #{cluster_size}" if cluster_size == config[:expected].to_i
-  rescue Mysql::Error => e
+  rescue Mysql2::Error => e
     critical "Percona MySQL check failed: #{e.error}"
   ensure
     db.close if db
