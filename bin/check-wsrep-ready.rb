@@ -29,6 +29,7 @@
 
 require 'sensu-plugin/check/cli'
 require 'mysql2'
+require 'inifile'
 
 class CheckWsrepReady < Sensu::Plugin::Check::CLI
   option :user,
@@ -48,12 +49,27 @@ class CheckWsrepReady < Sensu::Plugin::Check::CLI
          long: '--hostname HOST',
          default: 'localhost'
 
+  option :socket,
+         description: 'Socket to connect to',
+         short: '-s SOCKET',
+         long: '--socket SOCKET',
+         default: '/var/lib/mysql/mysql.sock'
+
+  option :ini,
+         description: 'ini file',
+         short: '-i',
+         long: '--ini VALUE'
+
   def run
+    if config[:ini]
+      update_config
+    end
     db = Mysql2::Client.new(
       host:     config[:hostname],
       username: config[:user],
       password: config[:password],
-      database: config[:database]
+      database: config[:database],
+      socket:   config[:socket]
     )
     wsrep_ready = db.query("SHOW STATUS LIKE 'wsrep_ready';").first['Value']
     critical "WSREP Ready is not ON. Is #{wsrep_ready}" if wsrep_ready != 'ON'
@@ -62,5 +78,12 @@ class CheckWsrepReady < Sensu::Plugin::Check::CLI
     critical "Percona MySQL check failed: #{e.error}"
   ensure
     db.close if db
+  end
+  def update_config
+    ini = IniFile.load(config[:ini])
+    section = ini['client']
+    section.each do |key, option|
+      config[key.to_sym] = option
+    end
   end
 end

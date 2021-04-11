@@ -35,6 +35,12 @@ class CheckPerconaClusterSize < Sensu::Plugin::Check::CLI
          short: '-h HOST',
          long: '--hostname HOST',
          default: 'localhost'
+  
+  option :socket,
+         description: 'Socket to connect to',
+         short: '-s SOCKET',
+         long: '--socket SOCKET',
+         default: '/var/lib/mysql/mysql.sock'
 
   option :expected,
          description: 'Number of servers expected in the cluster',
@@ -55,7 +61,8 @@ class CheckPerconaClusterSize < Sensu::Plugin::Check::CLI
       host:     config[:hostname],
       username: config[:user],
       password: config[:password],
-      database: config[:database]
+      database: config[:database],
+      socket:   config[:socket]
     )
     cluster_size = db.query("SHOW GLOBAL STATUS LIKE 'wsrep_cluster_size'").first['Value'].to_i
     critical "Expected to find #{config[:expected]} nodes, found #{cluster_size}" if cluster_size != config[:expected].to_i
